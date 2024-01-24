@@ -31,19 +31,20 @@ with st.sidebar:
         ''')
     st.write("Made with ❤️ by Amzad Basha.")
 
-#UI Content        
+# UI Content        
 uploaded_file = st.file_uploader("Upload an image...", type=["jpg", "jpeg", "png"])
-image=""
+image = ""
+
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
     st.image(image, caption="Uploaded Image.", use_column_width=True)
 
-input=st.text_input("Input Prompt: ",key="input")
+input = st.text_input("Input Prompt: ", key="input")
 
-submit=st.button("Submit")
+submit = st.button("Submit")
 
-#When the button is clicked
+# When the button is clicked
 if submit:
-    response=get_gemini_response(input,image)
+    response = get_gemini_response(input, image)
     st.subheader("The Response is")
     st.write(response)
